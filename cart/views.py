@@ -44,7 +44,7 @@ def add_to_cart(request, product_id):
         is_cart_item_exists = CartItem.objects.filter(product=product, user=current_user).exists()
         if is_cart_item_exists:
             cart_items = CartItem.objects.filter(product=product, user=current_user)
-            print(cart_items)
+            # print(cart_items)
             item = CartItem.objects.get(product=product, user=current_user)
             item.quantity += 1
             item.save()

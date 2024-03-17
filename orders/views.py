@@ -14,7 +14,7 @@ from django.utils.decorators import method_decorator
 @method_decorator(csrf_exempt, name='dispatch') # csrf ke disable kore deoya jnno ayta use.
 def success_view(request):
     data = request.POST
-    print('data -------', data)
+    # print('data -------', data)
     user_id = int(data['value_b'])  # Retrieve the stored user ID as an integer
     user = User.objects.get(pk=user_id)
     payment = Payment(
@@ -59,7 +59,7 @@ def order_complete(request):
 
 @login_required 
 def place_order(request):
-    print(request.POST)
+    # print(request.POST)
     cart_items = None
     tax = 0
     total = 0
@@ -73,7 +73,7 @@ def place_order(request):
     
     for item in cart_items:
         total += item.product.price * item.quantity
-    print(cart_items)  
+    # print(cart_items)  
     tax = (2*total)/100 # 2 % vat
     grand_total = total + tax
     if request.method == 'POST':
@@ -88,7 +88,7 @@ def place_order(request):
             form.instance.order_number = saved_instance.id
             
             form.save()
-            print('form print', form)
+            # print('form print', form)
             return redirect(sslcommerz_payment_gateway(request,  saved_instance.id, str(request.user.id), grand_total))
 
     return render(request, 'orders/place-order.html',{'cart_items' : cart_items, 'tax' : tax,'total' : total, 'grand_total' : grand_total})
