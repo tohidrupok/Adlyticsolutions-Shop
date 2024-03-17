@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<section class="section-conten padding-y bg">
+
+<div class="container">
+	<div class="row">
+	<main class="col-md-9">
+		<article class="card">
+		<header class="card-header">
+			<strong class="d-inline-block mr-3">This is Your Profile Page</strong>
+			<span>Edit Your Personal info</span>
+		</header> 
+		<br>
+		<a class="btn btn-light btn-block" href="{% url 'logout' %} "> <i class="fa fa-power-off"></i> <span class="text">Log out</span> </a> 
+	
+		</article> 
+	</main>
+</div> 
+</div>
+
+
+</section>
+{% endblock%}
